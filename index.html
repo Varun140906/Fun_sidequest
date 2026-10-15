@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Hey, Cool Stranger ✨</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,9 +35,18 @@
       align-items: center;
       font-family: "Inter", sans-serif;
       color: var(--white);
+
       background:
-        radial-gradient(circle at 12% 8%, #27345a 0, transparent 34%),
-        radial-gradient(circle at 90% 90%, #45213f 0, transparent 27%),
+        radial-gradient(
+          circle at 12% 8%,
+          #27345a 0,
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 90% 90%,
+          #45213f 0,
+          transparent 27%
+        ),
         var(--bg);
     }
 
@@ -61,11 +71,13 @@
       padding: 30px 25px 27px;
       border: 1px solid var(--border);
       border-radius: 34px;
+
       background: linear-gradient(
         145deg,
         rgba(34, 40, 62, 0.98),
         rgba(24, 28, 44, 0.98)
       );
+
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
     }
 
@@ -94,10 +106,10 @@
       color: var(--lime);
     }
 
-    /* Small circular dog photo */
+    /* Larger circular dog photo */
     .dog-photo {
-      width: 88px;
-      height: 88px;
+      width: 112px;
+      height: 112px;
       margin: 18px 0 23px;
       border-radius: 50%;
       overflow: hidden;
@@ -110,8 +122,9 @@
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
+      border-radius: 50%;
     }
 
     .divider {
@@ -124,7 +137,12 @@
       padding: 24px 21px;
       border: 1px solid #4b5b35;
       border-radius: 27px;
-      background: linear-gradient(145deg, #1b2330, #141923);
+
+      background: linear-gradient(
+        145deg,
+        #1b2330,
+        #141923
+      );
     }
 
     .label {
@@ -160,11 +178,15 @@
       color: #11121b;
       background: var(--lime);
       box-shadow: 0 7px 0 #a4c447;
+
       font-family: inherit;
       font-size: 17px;
       font-weight: 900;
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
+
+      transition:
+        transform 0.15s,
+        box-shadow 0.15s;
     }
 
     button:hover {
@@ -177,22 +199,7 @@
       box-shadow: 0 3px 0 #a4c447;
     }
 
-    /* Cat GIF */
-    .meme {
-      display: flex;
-      justify-content: center;
-      margin-top: 25px;
-    }
-
-    .meme img {
-      display: block;
-      max-width: 100%;
-      width: 210px;
-      max-height: 210px;
-      object-fit: contain;
-      border-radius: 18px;
-    }
-
+    /* Slightly larger kindness footer */
     .signature {
       margin: 25px 0 0;
       color: var(--muted);
@@ -208,6 +215,7 @@
       font-size: 12px;
     }
 
+    /* Sparkle animation */
     .sparkle {
       position: fixed;
       z-index: 10;
@@ -221,9 +229,13 @@
         opacity: 1;
         transform: translate(0, 0) scale(1);
       }
+
       to {
         opacity: 0;
-        transform: translate(var(--x), var(--y)) scale(0.3) rotate(90deg);
+        transform:
+          translate(var(--x), var(--y))
+          scale(0.3)
+          rotate(90deg);
       }
     }
 
@@ -249,6 +261,7 @@
 </head>
 
 <body>
+
   <main class="wrap">
 
     <div class="topline">
@@ -258,7 +271,9 @@
 
     <section class="card">
 
-      <div class="pill">BREAKING NEWS 📢</div>
+      <div class="pill">
+        BREAKING NEWS 📢
+      </div>
 
       <h1>
         HEY,<br>
@@ -266,15 +281,23 @@
         STRANGER.
       </h1>
 
-      <!-- Small circular dog photo -->
+      <!-- Dog photo -->
+      <!-- Keep dog.jpg in the same folder as index.html -->
       <div class="dog-photo">
-        <img src="dog.jpg" alt="A very judgemental good boy">
+        <img
+          src="dog.jpg"
+          alt="A very judgemental good boy"
+        >
       </div>
 
       <div class="divider"></div>
 
+      <!-- Compliment card -->
       <section class="compliment">
-        <div class="label">Compliment delivery ✨</div>
+
+        <div class="label">
+          Compliment delivery ✨
+        </div>
 
         <p id="complimentText">
           You're a limited edition. No restocks, no replacements.
@@ -283,16 +306,13 @@
         <p id="complimentSubtext">
           Please don't let the universe convince you otherwise.
         </p>
+
       </section>
 
+      <!-- One button to show more compliments -->
       <button id="moreButton" type="button">
         MORE COMPLIMENTS ✨
       </button>
-
-      <!-- Laughing cat GIF: upload your GIF as meme.gif -->
-      <div class="meme">
-        <img src="meme.gif" alt="A laughing orange cat">
-      </div>
 
       <p class="signature">
         A little random kindness, delivered to you. 💛
@@ -372,27 +392,39 @@
 
     let currentIndex = 0;
 
-    const complimentText = document.getElementById("complimentText");
-    const complimentSubtext = document.getElementById("complimentSubtext");
-    const moreButton = document.getElementById("moreButton");
+    const complimentText =
+      document.getElementById("complimentText");
+
+    const complimentSubtext =
+      document.getElementById("complimentSubtext");
+
+    const moreButton =
+      document.getElementById("moreButton");
 
     moreButton.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % compliments.length;
+      currentIndex =
+        (currentIndex + 1) % compliments.length;
 
-      complimentText.textContent = compliments[currentIndex].title;
-      complimentSubtext.textContent = compliments[currentIndex].sub;
+      complimentText.textContent =
+        compliments[currentIndex].title;
+
+      complimentSubtext.textContent =
+        compliments[currentIndex].sub;
 
       createSparkles();
     });
 
     function createSparkles() {
       const symbols = ["✨", "💛", "⭐", "💖", "✦"];
-      const buttonRect = moreButton.getBoundingClientRect();
+
+      const buttonRect =
+        moreButton.getBoundingClientRect();
 
       for (let i = 0; i < 10; i++) {
         const sparkle = document.createElement("span");
 
         sparkle.className = "sparkle";
+
         sparkle.textContent =
           symbols[Math.floor(Math.random() * symbols.length)];
 
@@ -402,14 +434,24 @@
         sparkle.style.top =
           buttonRect.top + buttonRect.height / 2 + "px";
 
-        sparkle.style.setProperty("--x", (Math.random() * 180 - 90) + "px");
-        sparkle.style.setProperty("--y", (Math.random() * -150 - 20) + "px");
+        sparkle.style.setProperty(
+          "--x",
+          (Math.random() * 180 - 90) + "px"
+        );
+
+        sparkle.style.setProperty(
+          "--y",
+          (Math.random() * -150 - 20) + "px"
+        );
 
         document.body.appendChild(sparkle);
 
-        setTimeout(() => sparkle.remove(), 900);
+        setTimeout(() => {
+          sparkle.remove();
+        }, 900);
       }
     }
   </script>
+
 </body>
 </html>

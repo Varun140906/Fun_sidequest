@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10111f">
 
   <title>Hey, Cool Stranger ✨</title>
 
@@ -14,7 +15,6 @@
   <style>
     :root {
       --bg: #10111f;
-      --card: #1d2235;
       --white: #f7f6ff;
       --muted: #b9c4e8;
       --pink: #ff80c5;
@@ -29,7 +29,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      padding: 48px 18px;
+      padding: 40px 16px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -37,17 +37,13 @@
       color: var(--white);
 
       background:
-        radial-gradient(
-          circle at 12% 8%,
-          #27345a 0,
-          transparent 34%
-        ),
-        radial-gradient(
-          circle at 90% 90%,
-          #45213f 0,
-          transparent 27%
-        ),
+        radial-gradient(circle at 12% 8%, #27345a 0, transparent 34%),
+        radial-gradient(circle at 90% 90%, #45213f 0, transparent 27%),
         var(--bg);
+    }
+
+    button {
+      font-family: inherit;
     }
 
     .wrap {
@@ -71,13 +67,11 @@
       padding: 30px 25px 27px;
       border: 1px solid var(--border);
       border-radius: 34px;
-
       background: linear-gradient(
         145deg,
         rgba(34, 40, 62, 0.98),
         rgba(24, 28, 44, 0.98)
       );
-
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
     }
 
@@ -106,25 +100,36 @@
       color: var(--lime);
     }
 
-    /* Larger circular dog photo */
+    /* Dog photo */
     .dog-photo {
       width: 112px;
       height: 112px;
-      margin: 18px 0 23px;
+      margin: 18px 0 12px;
+      border: 3px solid var(--pink);
       border-radius: 50%;
       overflow: hidden;
-      border: 3px solid var(--pink);
-      box-shadow: 0 0 0 5px rgba(255, 128, 197, 0.10);
       background: #292d40;
+      box-shadow: 0 0 0 5px rgba(255, 128, 197, 0.10);
     }
 
     .dog-photo img {
+      display: block;
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: contain;
       object-position: center;
       border-radius: 50%;
+    }
+
+    .dog-caption {
+      margin: 0 0 23px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .dog-caption strong {
+      color: var(--pink);
     }
 
     .divider {
@@ -137,12 +142,12 @@
       padding: 24px 21px;
       border: 1px solid #4b5b35;
       border-radius: 27px;
+      background: linear-gradient(145deg, #1b2330, #141923);
+      transition: transform 180ms ease;
+    }
 
-      background: linear-gradient(
-        145deg,
-        #1b2330,
-        #141923
-      );
+    .compliment.pop {
+      animation: pop 240ms ease;
     }
 
     .label {
@@ -157,7 +162,7 @@
     #complimentText {
       margin: 0;
       font-size: 25px;
-      line-height: 1.5;
+      line-height: 1.45;
       font-weight: 900;
       overflow-wrap: anywhere;
     }
@@ -169,37 +174,57 @@
       line-height: 1.7;
     }
 
-    button {
+    .counter {
+      margin-top: 15px;
+      color: #8d98bd;
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .main-button {
       width: 100%;
       margin-top: 20px;
-      padding: 22px 14px;
+      padding: 21px 14px;
       border: 0;
       border-radius: 21px;
       color: #11121b;
       background: var(--lime);
       box-shadow: 0 7px 0 #a4c447;
-
-      font-family: inherit;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 900;
       cursor: pointer;
-
-      transition:
-        transform 0.15s,
-        box-shadow 0.15s;
+      transition: transform 150ms ease, box-shadow 150ms ease;
     }
 
-    button:hover {
+    .main-button:hover {
       transform: translateY(-2px);
       box-shadow: 0 9px 0 #a4c447;
     }
 
-    button:active {
+    .main-button:active {
       transform: translateY(4px);
       box-shadow: 0 3px 0 #a4c447;
     }
 
-    /* Slightly larger kindness footer */
+    .share-button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 9px 12px;
+      border: 1px solid #464b62;
+      border-radius: 999px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color 150ms ease, border-color 150ms ease;
+    }
+
+    .share-button:hover {
+      color: var(--white);
+      border-color: var(--pink);
+    }
+
     .signature {
       margin: 25px 0 0;
       color: var(--muted);
@@ -208,14 +233,44 @@
       line-height: 1.6;
     }
 
+    /* Hidden Easter egg */
+    .secret {
+      display: none;
+      margin-top: 20px;
+      padding: 17px;
+      border: 1px dashed var(--pink);
+      border-radius: 20px;
+      background: rgba(255, 128, 197, 0.07);
+      text-align: left;
+    }
+
+    .secret.show {
+      display: block;
+      animation: pop 350ms ease;
+    }
+
+    .secret-label {
+      margin-bottom: 8px;
+      color: var(--pink);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+    }
+
+    .secret p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     .bottom-note {
       margin: 25px 0 0;
       color: #7f8bb2;
       text-align: center;
       font-size: 12px;
+      line-height: 1.7;
     }
 
-    /* Sparkle animation */
     .sparkle {
       position: fixed;
       z-index: 10;
@@ -229,19 +284,26 @@
         opacity: 1;
         transform: translate(0, 0) scale(1);
       }
-
       to {
         opacity: 0;
-        transform:
-          translate(var(--x), var(--y))
-          scale(0.3)
-          rotate(90deg);
+        transform: translate(var(--x), var(--y)) scale(0.3) rotate(90deg);
+      }
+    }
+
+    @keyframes pop {
+      0% {
+        opacity: 0.5;
+        transform: scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
       }
     }
 
     @media (max-width: 480px) {
       body {
-        padding: 30px 14px;
+        padding: 26px 14px;
       }
 
       .card {
@@ -257,11 +319,17 @@
         font-size: 22px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 
 <body>
-
   <main class="wrap">
 
     <div class="topline">
@@ -271,9 +339,7 @@
 
     <section class="card">
 
-      <div class="pill">
-        BREAKING NEWS 📢
-      </div>
+      <div class="pill">BREAKING NEWS 📢</div>
 
       <h1>
         HEY,<br>
@@ -281,25 +347,24 @@
         STRANGER.
       </h1>
 
-      <!-- Dog photo -->
-      <!-- Keep dog.jpg in the same folder as index.html -->
       <div class="dog-photo">
         <img
           src="dog.jpg"
-          alt="A very judgemental good boy"
+          alt="The website's very important dog"
         >
       </div>
 
+      <p class="dog-caption">
+        <strong>Chief Vibe Inspector 🐶</strong><br>
+        Qualifications: none. Authority: unlimited.
+      </p>
+
       <div class="divider"></div>
 
-      <!-- Compliment card -->
-      <section class="compliment">
+      <section class="compliment" id="complimentCard">
+        <div class="label">Compliment delivery ✨</div>
 
-        <div class="label">
-          Compliment delivery ✨
-        </div>
-
-        <p id="complimentText">
+        <p id="complimentText" aria-live="polite">
           You're a limited edition. No restocks, no replacements.
         </p>
 
@@ -307,11 +372,28 @@
           Please don't let the universe convince you otherwise.
         </p>
 
+        <div class="counter" id="counter">
+          Compliment #1
+        </div>
       </section>
 
-      <!-- One button to show more compliments -->
-      <button id="moreButton" type="button">
+      <button class="main-button" id="moreButton" type="button">
         MORE COMPLIMENTS ✨
+      </button>
+
+      <section class="secret" id="secret" aria-live="polite">
+        <div class="secret-label">TOP SECRET — YOU FOUND IT</div>
+        <p>
+          You clicked for compliments seven times.
+          At this point, you're either very wholesome or
+          avoiding something important. 😂
+          <br><br>
+          Either way, the dog has approved your commitment.
+        </p>
+      </section>
+
+      <button class="share-button" id="shareButton" type="button">
+        Send this weird little discovery ↗
       </button>
 
       <p class="signature">
@@ -321,7 +403,8 @@
     </section>
 
     <p class="bottom-note">
-      Made with questionable levels of curiosity.
+      Made with questionable levels of curiosity.<br>
+      <span id="footerJoke">No scooters were emotionally prepared for this.</span>
     </p>
 
   </main>
@@ -387,10 +470,31 @@
       {
         title: "Somewhere, someone is glad you exist.",
         sub: "And now a random website is too. 💛"
+      },
+      {
+        title: "You scanned a QR on a scooty. Elite curiosity.",
+        sub: "Your decision-making is questionable. Your taste is excellent."
+      },
+      {
+        title: "Your face probably makes at least one person smile.",
+        sub: "That's a pretty good thing to be responsible for."
+      },
+      {
+        title: "You're a walking green flag. Probably.",
+        sub: "The dog has not completed the background check."
+      },
+      {
+        title: "May your battery last and your problems be temporary.",
+        sub: "A blessing from the Department of Random Kindness."
+      },
+      {
+        title: "You deserve a standing ovation for making it this far.",
+        sub: "Please imagine a tiny crowd clapping for you."
       }
     ];
 
     let currentIndex = 0;
+    let clickCount = 0;
 
     const complimentText =
       document.getElementById("complimentText");
@@ -398,12 +502,31 @@
     const complimentSubtext =
       document.getElementById("complimentSubtext");
 
+    const complimentCard =
+      document.getElementById("complimentCard");
+
     const moreButton =
       document.getElementById("moreButton");
 
+    const counter =
+      document.getElementById("counter");
+
+    const secret =
+      document.getElementById("secret");
+
+    const shareButton =
+      document.getElementById("shareButton");
+
     moreButton.addEventListener("click", () => {
-      currentIndex =
-        (currentIndex + 1) % compliments.length;
+      let nextIndex;
+
+      // Avoid showing the same compliment twice in a row.
+      do {
+        nextIndex = Math.floor(Math.random() * compliments.length);
+      } while (nextIndex === currentIndex);
+
+      currentIndex = nextIndex;
+      clickCount++;
 
       complimentText.textContent =
         compliments[currentIndex].title;
@@ -411,20 +534,36 @@
       complimentSubtext.textContent =
         compliments[currentIndex].sub;
 
+      counter.textContent =
+        "Compliment #" + (clickCount + 1);
+
+      // Replay the card animation.
+      complimentCard.classList.remove("pop");
+      void complimentCard.offsetWidth;
+      complimentCard.classList.add("pop");
+
       createSparkles();
+
+      // Reveal the secret after seven clicks.
+      if (clickCount >= 7 && !secret.classList.contains("show")) {
+        secret.classList.add("show");
+        createSparkles();
+      }
+
+      // Change the button label after a while.
+      if (clickCount >= 15) {
+        moreButton.textContent = "YOU'RE STILL HERE? MORE ✨";
+      }
     });
 
     function createSparkles() {
       const symbols = ["✨", "💛", "⭐", "💖", "✦"];
-
-      const buttonRect =
-        moreButton.getBoundingClientRect();
+      const buttonRect = moreButton.getBoundingClientRect();
 
       for (let i = 0; i < 10; i++) {
         const sparkle = document.createElement("span");
 
         sparkle.className = "sparkle";
-
         sparkle.textContent =
           symbols[Math.floor(Math.random() * symbols.length)];
 
@@ -446,12 +585,34 @@
 
         document.body.appendChild(sparkle);
 
-        setTimeout(() => {
-          sparkle.remove();
-        }, 900);
+        setTimeout(() => sparkle.remove(), 900);
       }
     }
-  </script>
 
+    shareButton.addEventListener("click", async () => {
+      const shareData = {
+        title: "Hey, Cool Stranger ✨",
+        text: "I found a tiny internet side quest. Go get a compliment 😂",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(shareData.url);
+          shareButton.textContent = "Link copied! Go spread chaos ✨";
+        } else {
+          // Fallback for browsers without sharing or clipboard support.
+          window.prompt("Copy this link and send it to a friend:", shareData.url);
+        }
+      } catch (error) {
+        // Sharing can be cancelled by the visitor; that's okay.
+        if (error.name !== "AbortError") {
+          window.prompt("Copy this link and send it to a friend:", shareData.url);
+        }
+      }
+    });
+  </script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111321">
-<title>A Tiny Compliment ✨</title>
+<title>A Random Act of Compliment ✨</title>
 
 <style>
 :root {
@@ -65,7 +65,7 @@ body {
   color: #211321;
   font-size: 10px;
   font-weight: 1000;
-  letter-spacing: .09em;
+  letter-spacing: .08em;
   transform: rotate(-2deg);
 }
 
@@ -73,7 +73,7 @@ h1 {
   font-size: clamp(37px, 10vw, 49px);
   letter-spacing: -.065em;
   line-height: .98;
-  margin: 21px 0 11px;
+  margin: 21px 0 13px;
 }
 
 h1 span { color: var(--lime); }
@@ -81,47 +81,29 @@ h1 span { color: var(--lime); }
 .lead {
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 19px;
+  line-height: 1.65;
+  margin: 0 0 20px;
 }
 
-.joke {
+/* Photo or GIF goes here */
+.meme {
+  width: 100%;
+  overflow: hidden;
   border: 1px solid #ffffff20;
   border-radius: 22px;
   background: #111522;
-  padding: 19px 16px;
-  text-align: center;
-  margin: 19px 0 17px;
+  margin: 0 0 19px;
 }
 
-.jokeicon {
-  font-size: 46px;
-  margin-bottom: 8px;
-}
-
-.joketag {
-  color: var(--blue);
-  font-size: 10px;
-  letter-spacing: .14em;
-  font-weight: 1000;
-}
-
-.jokeline {
-  font-size: 18px;
-  font-weight: 900;
-  line-height: 1.35;
-  margin: 8px 0 5px;
-}
-
-.jokesub {
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--muted);
-  margin: 0;
+.meme img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
 }
 
 .complimentbox {
-  margin-top: 17px;
   padding: 21px 18px;
   border: 1px solid #d8ff6944;
   border-radius: 22px;
@@ -138,7 +120,7 @@ h1 span { color: var(--lime); }
 
 .compliment {
   font-size: 22px;
-  line-height: 1.35;
+  line-height: 1.4;
   font-weight: 900;
   margin: 10px 0;
 }
@@ -162,7 +144,7 @@ button {
 }
 
 .primary {
-  margin-top: 14px;
+  margin-top: 17px;
   background: var(--lime);
   color: #141821;
   box-shadow: 0 5px 0 #a2bd4a;
@@ -173,17 +155,12 @@ button {
   box-shadow: 0 2px 0 #a2bd4a;
 }
 
-.footer {
+.signature {
   text-align: center;
   color: #929ab2;
   font-size: 11px;
   line-height: 1.5;
-  margin: 16px 5px 0;
-}
-
-@keyframes pop {
-  from { opacity: .4; transform: translateY(7px) scale(.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  margin: 18px 4px 0;
 }
 
 .spark {
@@ -191,6 +168,11 @@ button {
   pointer-events: none;
   animation: burst .8s ease-out forwards;
   font-size: 19px;
+}
+
+@keyframes pop {
+  from { opacity: .4; transform: translateY(7px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes burst {
@@ -219,32 +201,22 @@ button {
 
   <section class="card">
 
-    <div class="pill">A PUBLIC SERVICE ANNOUNCEMENT 📢</div>
+    <div class="pill">BREAKING NEWS 📢</div>
 
     <h1>HEY,<br><span>COOL</span><br>STRANGER.</h1>
 
     <p class="lead">
-      You scanned a random QR on a scooty.
-      Either you're curious or your decision-making is elite.
-      Both are respectable.
+      You scanned a random QR code on a scooty.
+      Bro really said, "Let me see where this side quest goes." 💀
     </p>
 
-    <!-- THE JOKE: visible immediately -->
-    <div class="joke">
-      <div class="jokeicon">🧠📶</div>
-      <div class="joketag">QUICK INTERNET JOKE</div>
-
-      <p class="jokeline">
-        My brain has too many tabs open…
-        and one of them is playing music but I can't find it.
-      </p>
-
-      <p class="jokesub">
-        If you relate, congratulations: you're a fully operational human.
-      </p>
+    <!-- Replace meme.gif with your own GIF or photo filename -->
+    <div class="meme">
+      <img src="meme.gif"
+           alt="A funny meme"
+           onerror="this.style.display='none'">
     </div>
 
-    <!-- A COMPLIMENT IS ALREADY VISIBLE -->
     <section class="complimentbox" aria-live="polite">
       <div class="tag">COMPLIMENT DELIVERY ✨</div>
 
@@ -257,20 +229,18 @@ button {
       </p>
     </section>
 
-    <!-- THE ONLY BUTTON -->
     <button class="primary" id="another">
       MORE COMPLIMENTS ✨
     </button>
 
-    <p class="footer">
-      No sign-up. No awkward DMs. Just jokes, compliments & good vibes.<br>
-      Have a lovely day, stranger. 💛
+    <p class="signature">
+      A little random kindness, delivered to you. 💛
     </p>
 
   </section>
 
-  <p class="footer">
-    Made by a human with a scooty and questionable amounts of internet.
+  <p class="signature">
+    Made with questionable levels of curiosity.
   </p>
 
 </main>
@@ -282,48 +252,60 @@ const compliments = [
     sub: "A rare talent. No certificate required."
   },
   {
-    line: "You look like someone with genuinely good music taste.",
-    sub: "If your playlist is questionable, this compliment is non-refundable."
+    line: "You look like someone with an elite music taste.",
+    sub: "I'm choosing to trust your playlist without evidence."
   },
   {
-    line: "Your smile probably fixes someone's day without you even knowing.",
-    sub: "Keep being your quietly awesome self."
+    line: "Your smile probably fixes someone's day without you knowing.",
+    sub: "Casually making the world less boring. Nice."
   },
   {
-    line: "You give main-character energy, but in a good-season-finale kind of way.",
-    sub: "Excellent character development. 10/10."
+    line: "You give main-character energy.",
+    sub: "Not the character who dies in the first 10 minutes, obviously."
   },
   {
-    line: "The world is already chaotic. Thanks for adding your own sparkle to it.",
-    sub: "An official compliment from the Department of Random Kindness."
+    line: "You seem like someone who has their life together.",
+    sub: "Even if your gallery has 47 screenshots you'll never open again."
   },
   {
-    line: "You deserve to hear something nice today: you're doing better than you think.",
-    sub: "A tiny reminder from a stranger on the internet. Take care of yourself."
+    line: "You deserve a compliment today, so here you go: you're awesome.",
+    sub: "No catch. No hidden terms and conditions."
   },
   {
-    line: "If being effortlessly cool was a subject, you might be suspiciously good at it.",
-    sub: "Unfortunately, the exam is just showing up as yourself."
+    line: "If coolness were a subject, you'd probably skip class and still pass.",
+    sub: "Honestly, a little unfair to the rest of us."
   },
   {
-    line: "You seem like someone who could turn a boring day into a good story.",
-    sub: "Please use this power responsibly. Or at least hilariously."
+    line: "Your existence has excellent vibes. Official rating: 10/10.",
+    sub: "Reviewed by a completely unqualified internet stranger."
   },
   {
-    line: "Your existence has excellent vibes. This review is completely unofficial: 10/10.",
-    sub: "Five stars from the Department of Random Kindness."
+    line: "You could probably make an awkward situation funny.",
+    sub: "A very useful skill. Especially at family functions."
   },
   {
-    line: "Someone out there is lucky to know you. Even if it's currently you and your snacks.",
-    sub: "Self-appreciation counts. Snack appreciation counts twice."
+    line: "Someone is lucky to have you in their life.",
+    sub: "And if that someone is your own self, that's a win too."
   },
   {
-    line: "You deserve the same kindness you give other people.",
-    sub: "Just a little reminder to be nice to yourself, too."
+    line: "You look like you give great advice.",
+    sub: "Whether you follow your own advice is a separate investigation."
   },
   {
-    line: "You might be someone's favourite notification. Never underestimate your presence.",
-    sub: "No pressure to do anything with that information. Just enjoy your day."
+    line: "You're a limited edition. No restocks, no replacements.",
+    sub: "Please don't let the universe convince you otherwise."
+  },
+  {
+    line: "You have a very likeable kind of energy.",
+    sub: "This compliment has passed absolutely zero scientific tests."
+  },
+  {
+    line: "May your day be as lovely as your vibe.",
+    sub: "And may your phone battery stay above 20%."
+  },
+  {
+    line: "You deserve good people, good memories, and good food.",
+    sub: "Especially the good food part. That one's important."
   }
 ];
 
@@ -343,27 +325,22 @@ function nextCompliment() {
 
   last = i;
 
-  const c = compliments[i];
-
-  complimentEl.textContent = c.line;
-  subEl.textContent = c.sub;
+  complimentEl.textContent = compliments[i].line;
+  subEl.textContent = compliments[i].sub;
 
   complimentBox.style.animation = "none";
   void complimentBox.offsetWidth;
   complimentBox.style.animation = "";
 
-  // Tiny sparkle burst
-  const symbols = ["✦", "✳", "♡", "✧", "💫"];
+  const symbols = ["✦", "♡", "✧", "💫"];
 
   for (let j = 0; j < 10; j++) {
     const s = document.createElement("span");
-
     s.className = "spark";
     s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
 
     s.style.left = (15 + Math.random() * 70) + "%";
     s.style.top = (58 + Math.random() * 20) + "%";
-
     s.style.setProperty("--x", (Math.random() * 130 - 65) + "px");
     s.style.setProperty("--y", (-Math.random() * 100 - 20) + "px");
 
@@ -372,7 +349,8 @@ function nextCompliment() {
   }
 }
 
-document.getElementById("another").addEventListener("click", nextCompliment);
+document.getElementById("another")
+  .addEventListener("click", nextCompliment);
 </script>
 </body>
 </html>

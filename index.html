@@ -2,355 +2,414 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#111321">
-<title>A Random Act of Compliment ✨</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey, Cool Stranger ✨</title>
 
-<style>
-:root {
-  --bg: #111321;
-  --text: #f7f7ff;
-  --muted: #b9bfd6;
-  --lime: #d8ff69;
-  --pink: #ff8fcb;
-  --blue: #91eaff;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-* { box-sizing: border-box; }
+  <style>
+    :root {
+      --bg: #10111f;
+      --card: #1d2235;
+      --white: #f7f6ff;
+      --muted: #b9c4e8;
+      --pink: #ff80c5;
+      --lime: #d5ff65;
+      --border: #393e52;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 20px 15px;
-  color: var(--text);
-  font-family: system-ui, sans-serif;
-  background:
-    radial-gradient(circle at 8% 8%, #28345a, transparent 34%),
-    radial-gradient(circle at 95% 90%, #442344, transparent 35%),
-    var(--bg);
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.wrap { width: min(100%, 440px); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 48px 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Inter", sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 12% 8%, #27345a 0, transparent 34%),
+        radial-gradient(circle at 90% 90%, #45213f 0, transparent 27%),
+        var(--bg);
+    }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin: 0 4px 14px;
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
+    .wrap {
+      width: 100%;
+      max-width: 528px;
+    }
 
-.card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #ffffff20;
-  border-radius: 28px;
-  padding: 24px 21px;
-  background: linear-gradient(150deg, #222a42f5, #171a2bf7);
-  box-shadow: 0 24px 75px #0007;
-}
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 5px 18px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
 
-.pill {
-  display: inline-block;
-  padding: 7px 10px;
-  border-radius: 99px;
-  background: var(--pink);
-  color: #211321;
-  font-size: 10px;
-  font-weight: 1000;
-  letter-spacing: .08em;
-  transform: rotate(-2deg);
-}
+    .card {
+      padding: 30px 25px 27px;
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      background: linear-gradient(
+        145deg,
+        rgba(34, 40, 62, 0.98),
+        rgba(24, 28, 44, 0.98)
+      );
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+    }
 
-h1 {
-  font-size: clamp(37px, 10vw, 49px);
-  letter-spacing: -.065em;
-  line-height: .98;
-  margin: 21px 0 13px;
-}
+    .pill {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: #171323;
+      background: var(--pink);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      transform: rotate(-2deg);
+    }
 
-h1 span { color: var(--lime); }
+    h1 {
+      margin: 28px 0 14px;
+      font-size: clamp(42px, 10vw, 56px);
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+    }
 
-.lead {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.65;
-  margin: 0 0 20px;
-}
+    h1 span {
+      color: var(--lime);
+    }
 
-/* Photo or GIF goes here */
-.meme {
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid #ffffff20;
-  border-radius: 22px;
-  background: #111522;
-  margin: 0 0 19px;
-}
+    /* Small circular dog photo */
+    .dog-photo {
+      width: 88px;
+      height: 88px;
+      margin: 18px 0 23px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--pink);
+      box-shadow: 0 0 0 5px rgba(255, 128, 197, 0.10);
+      background: #292d40;
+    }
 
-.meme img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 360px;
-  object-fit: contain;
-}
+    .dog-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
 
-.complimentbox {
-  padding: 21px 18px;
-  border: 1px solid #d8ff6944;
-  border-radius: 22px;
-  background: linear-gradient(145deg, #222b31, #111522);
-  animation: pop .35s ease-out;
-}
+    .divider {
+      height: 1px;
+      margin: 0 0 24px;
+      background: #383b4b;
+    }
 
-.tag {
-  color: var(--pink);
-  font-size: 10px;
-  letter-spacing: .14em;
-  font-weight: 1000;
-}
+    .compliment {
+      padding: 24px 21px;
+      border: 1px solid #4b5b35;
+      border-radius: 27px;
+      background: linear-gradient(145deg, #1b2330, #141923);
+    }
 
-.compliment {
-  font-size: 22px;
-  line-height: 1.4;
-  font-weight: 900;
-  margin: 10px 0;
-}
+    .label {
+      margin-bottom: 15px;
+      color: var(--pink);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
 
-.sub {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-  margin: 0;
-}
+    #complimentText {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.5;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
 
-button {
-  width: 100%;
-  border: 0;
-  border-radius: 16px;
-  min-height: 56px;
-  padding: 14px 16px;
-  font-size: 15px;
-  font-weight: 900;
-  cursor: pointer;
-}
+    #complimentSubtext {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
 
-.primary {
-  margin-top: 17px;
-  background: var(--lime);
-  color: #141821;
-  box-shadow: 0 5px 0 #a2bd4a;
-}
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 22px 14px;
+      border: 0;
+      border-radius: 21px;
+      color: #11121b;
+      background: var(--lime);
+      box-shadow: 0 7px 0 #a4c447;
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
 
-.primary:active {
-  transform: translateY(3px);
-  box-shadow: 0 2px 0 #a2bd4a;
-}
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 9px 0 #a4c447;
+    }
 
-.signature {
-  text-align: center;
-  color: #929ab2;
-  font-size: 11px;
-  line-height: 1.5;
-  margin: 18px 4px 0;
-}
+    button:active {
+      transform: translateY(4px);
+      box-shadow: 0 3px 0 #a4c447;
+    }
 
-.spark {
-  position: absolute;
-  pointer-events: none;
-  animation: burst .8s ease-out forwards;
-  font-size: 19px;
-}
+    /* Cat GIF */
+    .meme {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
 
-@keyframes pop {
-  from { opacity: .4; transform: translateY(7px) scale(.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
+    .meme img {
+      display: block;
+      max-width: 100%;
+      width: 210px;
+      max-height: 210px;
+      object-fit: contain;
+      border-radius: 18px;
+    }
 
-@keyframes burst {
-  to {
-    opacity: 0;
-    transform: translate(var(--x), var(--y)) rotate(45deg) scale(1.3);
-  }
-}
+    .signature {
+      margin: 25px 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.6;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-</style>
+    .bottom-note {
+      margin: 25px 0 0;
+      color: #7f8bb2;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .sparkle {
+      position: fixed;
+      z-index: 10;
+      pointer-events: none;
+      font-size: 20px;
+      animation: fly 850ms ease-out forwards;
+    }
+
+    @keyframes fly {
+      from {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.3) rotate(90deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 14px;
+      }
+
+      .card {
+        padding: 25px 19px;
+        border-radius: 28px;
+      }
+
+      h1 {
+        font-size: 45px;
+      }
+
+      #complimentText {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<main class="wrap">
+  <main class="wrap">
 
-  <div class="top">
-    <span>✦ A tiny internet stop</span>
-    <span>100% unofficial</span>
-  </div>
-
-  <section class="card">
-
-    <div class="pill">BREAKING NEWS 📢</div>
-
-    <h1>HEY,<br><span>COOL</span><br>STRANGER.</h1>
-
-    <p class="lead">
-      You scanned a random QR code on a scooty.
-      Bro really said, "Let me see where this side quest goes." 💀
-    </p>
-
-    <!-- Replace meme.gif with your own GIF or photo filename -->
-    <div class="meme">
-      <img src="meme.gif"
-           alt="A funny meme"
-           onerror="this.style.display='none'">
+    <div class="topline">
+      <span>✦ A tiny internet stop</span>
+      <span>100% unofficial</span>
     </div>
 
-    <section class="complimentbox" aria-live="polite">
-      <div class="tag">COMPLIMENT DELIVERY ✨</div>
+    <section class="card">
 
-      <p class="compliment" id="compliment">
-        You have the kind of vibe that makes a place feel a little nicer.
+      <div class="pill">BREAKING NEWS 📢</div>
+
+      <h1>
+        HEY,<br>
+        <span>COOL</span><br>
+        STRANGER.
+      </h1>
+
+      <!-- Small circular dog photo -->
+      <div class="dog-photo">
+        <img src="dog.jpg" alt="A very judgemental good boy">
+      </div>
+
+      <div class="divider"></div>
+
+      <section class="compliment">
+        <div class="label">Compliment delivery ✨</div>
+
+        <p id="complimentText">
+          You're a limited edition. No restocks, no replacements.
+        </p>
+
+        <p id="complimentSubtext">
+          Please don't let the universe convince you otherwise.
+        </p>
+      </section>
+
+      <button id="moreButton" type="button">
+        MORE COMPLIMENTS ✨
+      </button>
+
+      <!-- Laughing cat GIF: upload your GIF as meme.gif -->
+      <div class="meme">
+        <img src="meme.gif" alt="A laughing orange cat">
+      </div>
+
+      <p class="signature">
+        A little random kindness, delivered to you. 💛
       </p>
 
-      <p class="sub" id="sub">
-        A rare talent. No certificate required.
-      </p>
     </section>
 
-    <button class="primary" id="another">
-      MORE COMPLIMENTS ✨
-    </button>
-
-    <p class="signature">
-      A little random kindness, delivered to you. 💛
+    <p class="bottom-note">
+      Made with questionable levels of curiosity.
     </p>
 
-  </section>
+  </main>
 
-  <p class="signature">
-    Made with questionable levels of curiosity.
-  </p>
+  <script>
+    const compliments = [
+      {
+        title: "You're a limited edition. No restocks, no replacements.",
+        sub: "Please don't let the universe convince you otherwise."
+      },
+      {
+        title: "You have main-character energy.",
+        sub: "Even your side quests deserve a soundtrack."
+      },
+      {
+        title: "Your existence is an excellent plot twist.",
+        sub: "The writers actually cooked with this one."
+      },
+      {
+        title: "You're someone's favourite kind of human.",
+        sub: "And honestly, they have excellent taste."
+      },
+      {
+        title: "You make ordinary things feel a little less ordinary.",
+        sub: "That's a rare talent. Don't underestimate it."
+      },
+      {
+        title: "You're doing better than your brain gives you credit for.",
+        sub: "Respectfully, your brain needs to chill."
+      },
+      {
+        title: "Your vibe deserves its own premium subscription.",
+        sub: "No ads. Unlimited good energy."
+      },
+      {
+        title: "You're proof that random encounters can be legendary.",
+        sub: "This QR scan was clearly important lore."
+      },
+      {
+        title: "You are, in fact, the whole package.",
+        sub: "Shipping may take time. Worth the wait."
+      },
+      {
+        title: "You deserve the kind of happiness that sneaks up on you.",
+        sub: "Like finding money in an old pocket."
+      },
+      {
+        title: "Your future self is rooting for you.",
+        sub: "Probably with snacks and questionable advice."
+      },
+      {
+        title: "You bring something to the world nobody else can.",
+        sub: "Please continue being unapologetically you."
+      },
+      {
+        title: "You look like someone who deserves a really good day.",
+        sub: "Conveniently, today is accepting applications."
+      },
+      {
+        title: "Your potential is kind of ridiculous.",
+        sub: "In a good way. Don't make it weird."
+      },
+      {
+        title: "Somewhere, someone is glad you exist.",
+        sub: "And now a random website is too. 💛"
+      }
+    ];
 
-</main>
+    let currentIndex = 0;
 
-<script>
-const compliments = [
-  {
-    line: "You have the kind of vibe that makes a place feel a little nicer.",
-    sub: "A rare talent. No certificate required."
-  },
-  {
-    line: "You look like someone with an elite music taste.",
-    sub: "I'm choosing to trust your playlist without evidence."
-  },
-  {
-    line: "Your smile probably fixes someone's day without you knowing.",
-    sub: "Casually making the world less boring. Nice."
-  },
-  {
-    line: "You give main-character energy.",
-    sub: "Not the character who dies in the first 10 minutes, obviously."
-  },
-  {
-    line: "You seem like someone who has their life together.",
-    sub: "Even if your gallery has 47 screenshots you'll never open again."
-  },
-  {
-    line: "You deserve a compliment today, so here you go: you're awesome.",
-    sub: "No catch. No hidden terms and conditions."
-  },
-  {
-    line: "If coolness were a subject, you'd probably skip class and still pass.",
-    sub: "Honestly, a little unfair to the rest of us."
-  },
-  {
-    line: "Your existence has excellent vibes. Official rating: 10/10.",
-    sub: "Reviewed by a completely unqualified internet stranger."
-  },
-  {
-    line: "You could probably make an awkward situation funny.",
-    sub: "A very useful skill. Especially at family functions."
-  },
-  {
-    line: "Someone is lucky to have you in their life.",
-    sub: "And if that someone is your own self, that's a win too."
-  },
-  {
-    line: "You look like you give great advice.",
-    sub: "Whether you follow your own advice is a separate investigation."
-  },
-  {
-    line: "You're a limited edition. No restocks, no replacements.",
-    sub: "Please don't let the universe convince you otherwise."
-  },
-  {
-    line: "You have a very likeable kind of energy.",
-    sub: "This compliment has passed absolutely zero scientific tests."
-  },
-  {
-    line: "May your day be as lovely as your vibe.",
-    sub: "And may your phone battery stay above 20%."
-  },
-  {
-    line: "You deserve good people, good memories, and good food.",
-    sub: "Especially the good food part. That one's important."
-  }
-];
+    const complimentText = document.getElementById("complimentText");
+    const complimentSubtext = document.getElementById("complimentSubtext");
+    const moreButton = document.getElementById("moreButton");
 
-let last = -1;
+    moreButton.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % compliments.length;
 
-const complimentEl = document.getElementById("compliment");
-const subEl = document.getElementById("sub");
-const card = document.querySelector(".card");
-const complimentBox = document.querySelector(".complimentbox");
+      complimentText.textContent = compliments[currentIndex].title;
+      complimentSubtext.textContent = compliments[currentIndex].sub;
 
-function nextCompliment() {
-  let i;
+      createSparkles();
+    });
 
-  do {
-    i = Math.floor(Math.random() * compliments.length);
-  } while (compliments.length > 1 && i === last);
+    function createSparkles() {
+      const symbols = ["✨", "💛", "⭐", "💖", "✦"];
+      const buttonRect = moreButton.getBoundingClientRect();
 
-  last = i;
+      for (let i = 0; i < 10; i++) {
+        const sparkle = document.createElement("span");
 
-  complimentEl.textContent = compliments[i].line;
-  subEl.textContent = compliments[i].sub;
+        sparkle.className = "sparkle";
+        sparkle.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
 
-  complimentBox.style.animation = "none";
-  void complimentBox.offsetWidth;
-  complimentBox.style.animation = "";
+        sparkle.style.left =
+          buttonRect.left + buttonRect.width / 2 + "px";
 
-  const symbols = ["✦", "♡", "✧", "💫"];
+        sparkle.style.top =
+          buttonRect.top + buttonRect.height / 2 + "px";
 
-  for (let j = 0; j < 10; j++) {
-    const s = document.createElement("span");
-    s.className = "spark";
-    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        sparkle.style.setProperty("--x", (Math.random() * 180 - 90) + "px");
+        sparkle.style.setProperty("--y", (Math.random() * -150 - 20) + "px");
 
-    s.style.left = (15 + Math.random() * 70) + "%";
-    s.style.top = (58 + Math.random() * 20) + "%";
-    s.style.setProperty("--x", (Math.random() * 130 - 65) + "px");
-    s.style.setProperty("--y", (-Math.random() * 100 - 20) + "px");
+        document.body.appendChild(sparkle);
 
-    card.appendChild(s);
-    setTimeout(() => s.remove(), 850);
-  }
-}
-
-document.getElementById("another")
-  .addEventListener("click", nextCompliment);
-</script>
+        setTimeout(() => sparkle.remove(), 900);
+      }
+    }
+  </script>
 </body>
 </html>

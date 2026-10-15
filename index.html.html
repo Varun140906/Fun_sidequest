@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10131f">
+<title>A Tiny Side Quest ✨</title>
+<style>
+  :root { --bg:#10131f; --card:#1a2032; --ink:#f7f7fb; --muted:#b7bfd4; --lime:#d8ff62; --pink:#ff86c8; --blue:#8ee7ff; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100svh; display:grid; place-items:center; padding:22px 16px;
+    color:var(--ink); font-family: ui-rounded, "SF Pro Rounded", "Trebuchet MS", system-ui, sans-serif;
+    background: radial-gradient(circle at 12% 10%, #283253 0, transparent 34%),
+                radial-gradient(circle at 90% 90%, #3a2043 0, transparent 35%), var(--bg);
+    overflow-x:hidden;
+  }
+  .wrap { width:min(100%, 440px); position:relative; }
+  .topline { display:flex; justify-content:space-between; align-items:center; margin:0 3px 15px; color:var(--muted); font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
+  .dot { width:8px; height:8px; display:inline-block; border-radius:50%; background:var(--lime); margin-right:7px; box-shadow:0 0 14px var(--lime); }
+  .card { position:relative; overflow:hidden; border:1px solid #ffffff20; border-radius:30px; padding:28px 23px 24px; background:linear-gradient(155deg,#202940f2,#171a29f5); box-shadow:0 25px 80px #0007; }
+  .sticker { display:inline-flex; align-items:center; gap:7px; padding:8px 11px; border-radius:99px; color:#171b24; background:var(--lime); font-size:11px; font-weight:900; letter-spacing:.08em; transform:rotate(-2deg); }
+  h1 { margin:21px 0 10px; font-size:clamp(37px,10vw,51px); line-height:.98; letter-spacing:-.06em; }
+  h1 span { color:var(--lime); }
+  .intro { color:var(--muted); font-size:15px; line-height:1.6; margin:0 0 22px; }
+  .mascot { width:138px; height:138px; margin:9px auto 22px; border-radius:36px; display:grid; place-items:center; font-size:76px; background:linear-gradient(135deg,#d8ff62,#8ee7ff); box-shadow:0 12px 40px #d8ff6220; transform:rotate(3deg); animation:float 3.5s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0) rotate(3deg)} 50%{transform:translateY(-8px) rotate(-2deg)} }
+  .button { border:0; width:100%; min-height:58px; border-radius:18px; padding:15px 18px; background:var(--lime); color:#11151c; font:900 16px inherit; font-size:16px; font-weight:900; cursor:pointer; box-shadow:0 5px 0 #9dbb3e; transition:transform .12s,box-shadow .12s; }
+  .button:active { transform:translateY(4px); box-shadow:0 1px 0 #9dbb3e; }
+  .fine { color:#929bb3; text-align:center; font-size:11px; margin:18px 0 0; line-height:1.5; }
+  .result { display:none; margin-top:18px; padding:20px 18px; border:1px solid #ffffff20; border-radius:22px; background:#111522; animation:pop .35s cubic-bezier(.2,1.4,.5,1); }
+  .result.show { display:block; }
+  @keyframes pop { from{opacity:0;transform:scale(.92) translateY(8px)} to{opacity:1;transform:scale(1) translateY(0)} }
+  .eyebrow { color:var(--pink); font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+  #message { font-size:19px; font-weight:800; line-height:1.4; margin:9px 0 12px; }
+  #submessage { color:var(--muted); font-size:13px; line-height:1.55; margin:0; }
+  .again { margin-top:15px; background:transparent; border:1px solid #ffffff38; color:var(--ink); border-radius:13px; padding:11px 14px; font-weight:800; cursor:pointer; }
+  .footer { text-align:center; color:#929bb3; font-size:11px; margin:15px 0 0; }
+  .spark { position:absolute; pointer-events:none; font-size:20px; animation:burst .8s ease-out forwards; z-index:5; }
+  @keyframes burst { from{opacity:1;transform:translate(0,0) scale(.5)} to{opacity:0;transform:translate(var(--x),var(--y)) rotate(45deg) scale(1.4)} }
+  .tiny { position:absolute; font-size:23px; opacity:.8; }
+  .t1 { top:88px; right:3px; transform:rotate(13deg); } .t2 { bottom:140px; left:-7px; transform:rotate(-12deg); }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topline"><span><i class="dot"></i> totally unofficial</span><span>tiny internet stop ✦ 01</span></div>
+  <span class="tiny t1">✳️</span><span class="tiny t2">💫</span>
+  <section class="card">
+    <div class="sticker">⚠️ EXTREMELY IMPORTANT</div>
+    <h1>HEY,<br><span>COOL</span><br>STRANGER.</h1>
+    <p class="intro">You scanned a random QR on a scooty. Your curiosity is elite. Your reward is… questionable.</p>
+    <div class="mascot" aria-label="A smiling little planet">🪐</div>
+    <button class="button" id="reveal">UNLOCK YOUR SIDE QUEST ↗</button>
+    <section class="result" id="result" aria-live="polite">
+      <div class="eyebrow" id="eyebrow">A MESSAGE FROM THE UNIVERSE</div>
+      <p id="message"></p>
+      <p id="submessage"></p>
+      <button class="again" id="again">Again? I make questionable choices ↻</button>
+    </section>
+    <p class="fine">No sign-up. No tracking. No awkward DMs.<br>Just a tiny, unnecessary reason to smile.</p>
+  </section>
+  <p class="footer">made by a human with a scooty & too much internet ✦</p>
+</main>
+<script>
+  // EDIT THESE MESSAGES ANYTIME. Keep the same page URL and your QR code never changes.
+  const sideQuests = [
+    { tag:"COMPLIMENT DELIVERY", message:"You have the kind of face that makes a bad day buffer for a second.", sub:"That was your complimentary confidence boost. Please carry on being iconic." },
+    { tag:"OFFICIAL SCIENCE", message:"Statistically speaking, you are 100% more interesting than this website.", sub:"The study had one participant and zero funding. Still peer-reviewed by a cat." },
+    { tag:"A VERY SERIOUS ALERT", message:"🚨 Your smile has been reported for causing suspicious levels of good vibes.", sub:"The authorities are a golden retriever. You are not in trouble." },
+    { tag:"DAILY SIDE QUEST", message:"Your mission: drink some water, stretch your shoulders, and remember you're doing alright.", sub:"Quest difficulty: easy. Reward: +10 human points." },
+    { tag:"COMPLIMENT DELIVERY", message:"You look like someone who has excellent music taste. I will not be taking questions.", sub:"If your playlist is terrible, this message self-destructs in 3… 2… just kidding." },
+    { tag:"BREAKING NEWS", message:"Local stranger successfully found the internet's smallest comedy club.", sub:"Tonight's show is free. The comedian is a website. Please clap politely." },
+    { tag:"THE UNIVERSE TEXTED", message:"Psst. Something good might happen today. It could be tiny. Tiny still counts.", sub:"Like finding money in a pocket. Or getting the green light. Or perfect chai." },
+    { tag:"COMPLIMENT DELIVERY", message:"You deserve a little treat today. This website recommends: your favourite snack.", sub:"I would recommend paying for it yourself. My budget is literally zero rupees." }
+  ];
+  const button = document.getElementById("reveal");
+  const result = document.getElementById("result");
+  const message = document.getElementById("message");
+  const submessage = document.getElementById("submessage");
+  const eyebrow = document.getElementById("eyebrow");
+  let last = -1;
+
+  function showQuest() {
+    let i;
+    do { i = Math.floor(Math.random() * sideQuests.length); } while (sideQuests.length > 1 && i === last);
+    last = i;
+    const item = sideQuests[i];
+    eyebrow.textContent = item.tag;
+    message.textContent = item.message;
+    submessage.textContent = item.sub;
+    result.classList.remove("show");
+    void result.offsetWidth;
+    result.classList.add("show");
+    burst();
+  }
+  function burst() {
+    const symbols = ["✦","✳","💫","♡","✧"];
+    const card = document.querySelector(".card");
+    for (let i=0;i<13;i++) {
+      const s = document.createElement("span");
+      s.className = "spark";
+      s.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      s.style.left = (15 + Math.random()*70) + "%";
+      s.style.top = (42 + Math.random()*25) + "%";
+      s.style.setProperty("--x", (Math.random()*150-75) + "px");
+      s.style.setProperty("--y", (Math.random()*-130-15) + "px");
+      card.appendChild(s);
+      setTimeout(() => s.remove(), 850);
+    }
+  }
+  button.addEventListener("click", () => {
+    showQuest();
+    button.textContent = "ANOTHER LITTLE SIDE QUEST ↗";
+    result.scrollIntoView({behavior:"smooth", block:"nearest"});
+  });
+  document.getElementById("again").addEventListener("click", showQuest);
+</script>
+</body>
+</html>

@@ -1,121 +1,378 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#10131f">
-<title>A Tiny Side Quest ✨</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111321">
+<title>A Tiny Compliment ✨</title>
+
 <style>
-  :root { --bg:#10131f; --card:#1a2032; --ink:#f7f7fb; --muted:#b7bfd4; --lime:#d8ff62; --pink:#ff86c8; --blue:#8ee7ff; }
-  * { box-sizing:border-box; }
-  body {
-    margin:0; min-height:100svh; display:grid; place-items:center; padding:22px 16px;
-    color:var(--ink); font-family: ui-rounded, "SF Pro Rounded", "Trebuchet MS", system-ui, sans-serif;
-    background: radial-gradient(circle at 12% 10%, #283253 0, transparent 34%),
-                radial-gradient(circle at 90% 90%, #3a2043 0, transparent 35%), var(--bg);
-    overflow-x:hidden;
+:root {
+  --bg: #111321;
+  --text: #f7f7ff;
+  --muted: #b9bfd6;
+  --lime: #d8ff69;
+  --pink: #ff8fcb;
+  --blue: #91eaff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px 15px;
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 8% 8%, #28345a, transparent 34%),
+    radial-gradient(circle at 95% 90%, #442344, transparent 35%),
+    var(--bg);
+}
+
+.wrap { width: min(100%, 440px); }
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 4px 14px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ffffff20;
+  border-radius: 28px;
+  padding: 24px 21px;
+  background: linear-gradient(150deg, #222a42f5, #171a2bf7);
+  box-shadow: 0 24px 75px #0007;
+}
+
+.pill {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 99px;
+  background: var(--pink);
+  color: #211321;
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: .09em;
+  transform: rotate(-2deg);
+}
+
+h1 {
+  font-size: clamp(37px, 10vw, 49px);
+  letter-spacing: -.065em;
+  line-height: .98;
+  margin: 21px 0 11px;
+}
+
+h1 span { color: var(--lime); }
+
+.lead {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 19px;
+}
+
+.joke {
+  border: 1px solid #ffffff20;
+  border-radius: 22px;
+  background: #111522;
+  padding: 19px 16px;
+  text-align: center;
+  margin: 19px 0 17px;
+}
+
+.jokeicon {
+  font-size: 46px;
+  margin-bottom: 8px;
+}
+
+.joketag {
+  color: var(--blue);
+  font-size: 10px;
+  letter-spacing: .14em;
+  font-weight: 1000;
+}
+
+.jokeline {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.35;
+  margin: 8px 0 5px;
+}
+
+.jokesub {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+
+.complimentbox {
+  margin-top: 17px;
+  padding: 21px 18px;
+  border: 1px solid #d8ff6944;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #222b31, #111522);
+  animation: pop .35s ease-out;
+}
+
+.tag {
+  color: var(--pink);
+  font-size: 10px;
+  letter-spacing: .14em;
+  font-weight: 1000;
+}
+
+.compliment {
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 900;
+  margin: 10px 0;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 16px;
+  min-height: 56px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.primary {
+  margin-top: 14px;
+  background: var(--lime);
+  color: #141821;
+  box-shadow: 0 5px 0 #a2bd4a;
+}
+
+.primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #a2bd4a;
+}
+
+.footer {
+  text-align: center;
+  color: #929ab2;
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 16px 5px 0;
+}
+
+@keyframes pop {
+  from { opacity: .4; transform: translateY(7px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.spark {
+  position: absolute;
+  pointer-events: none;
+  animation: burst .8s ease-out forwards;
+  font-size: 19px;
+}
+
+@keyframes burst {
+  to {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(45deg) scale(1.3);
   }
-  .wrap { width:min(100%, 440px); position:relative; }
-  .topline { display:flex; justify-content:space-between; align-items:center; margin:0 3px 15px; color:var(--muted); font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
-  .dot { width:8px; height:8px; display:inline-block; border-radius:50%; background:var(--lime); margin-right:7px; box-shadow:0 0 14px var(--lime); }
-  .card { position:relative; overflow:hidden; border:1px solid #ffffff20; border-radius:30px; padding:28px 23px 24px; background:linear-gradient(155deg,#202940f2,#171a29f5); box-shadow:0 25px 80px #0007; }
-  .sticker { display:inline-flex; align-items:center; gap:7px; padding:8px 11px; border-radius:99px; color:#171b24; background:var(--lime); font-size:11px; font-weight:900; letter-spacing:.08em; transform:rotate(-2deg); }
-  h1 { margin:21px 0 10px; font-size:clamp(37px,10vw,51px); line-height:.98; letter-spacing:-.06em; }
-  h1 span { color:var(--lime); }
-  .intro { color:var(--muted); font-size:15px; line-height:1.6; margin:0 0 22px; }
-  .mascot { width:138px; height:138px; margin:9px auto 22px; border-radius:36px; display:grid; place-items:center; font-size:76px; background:linear-gradient(135deg,#d8ff62,#8ee7ff); box-shadow:0 12px 40px #d8ff6220; transform:rotate(3deg); animation:float 3.5s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0) rotate(3deg)} 50%{transform:translateY(-8px) rotate(-2deg)} }
-  .button { border:0; width:100%; min-height:58px; border-radius:18px; padding:15px 18px; background:var(--lime); color:#11151c; font:900 16px inherit; font-size:16px; font-weight:900; cursor:pointer; box-shadow:0 5px 0 #9dbb3e; transition:transform .12s,box-shadow .12s; }
-  .button:active { transform:translateY(4px); box-shadow:0 1px 0 #9dbb3e; }
-  .fine { color:#929bb3; text-align:center; font-size:11px; margin:18px 0 0; line-height:1.5; }
-  .result { display:none; margin-top:18px; padding:20px 18px; border:1px solid #ffffff20; border-radius:22px; background:#111522; animation:pop .35s cubic-bezier(.2,1.4,.5,1); }
-  .result.show { display:block; }
-  @keyframes pop { from{opacity:0;transform:scale(.92) translateY(8px)} to{opacity:1;transform:scale(1) translateY(0)} }
-  .eyebrow { color:var(--pink); font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
-  #message { font-size:19px; font-weight:800; line-height:1.4; margin:9px 0 12px; }
-  #submessage { color:var(--muted); font-size:13px; line-height:1.55; margin:0; }
-  .again { margin-top:15px; background:transparent; border:1px solid #ffffff38; color:var(--ink); border-radius:13px; padding:11px 14px; font-weight:800; cursor:pointer; }
-  .footer { text-align:center; color:#929bb3; font-size:11px; margin:15px 0 0; }
-  .spark { position:absolute; pointer-events:none; font-size:20px; animation:burst .8s ease-out forwards; z-index:5; }
-  @keyframes burst { from{opacity:1;transform:translate(0,0) scale(.5)} to{opacity:0;transform:translate(var(--x),var(--y)) rotate(45deg) scale(1.4)} }
-  .tiny { position:absolute; font-size:23px; opacity:.8; }
-  .t1 { top:88px; right:3px; transform:rotate(13deg); } .t2 { bottom:140px; left:-7px; transform:rotate(-12deg); }
-  @media (prefers-reduced-motion: reduce) { *,*::before,*::after{animation:none!important;transition:none!important} }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
 </style>
 </head>
+
 <body>
 <main class="wrap">
-  <div class="topline"><span><i class="dot"></i> totally unofficial</span><span>tiny internet stop ✦ 01</span></div>
-  <span class="tiny t1">✳️</span><span class="tiny t2">💫</span>
-  <section class="card">
-    <div class="sticker">⚠️ EXTREMELY IMPORTANT</div>
-    <h1>HEY,<br><span>COOL</span><br>STRANGER.</h1>
-    <p class="intro">You scanned a random QR on a scooty. Your curiosity is elite. Your reward is… questionable.</p>
-    <div class="mascot" aria-label="A smiling little planet">🪐</div>
-    <button class="button" id="reveal">UNLOCK YOUR SIDE QUEST ↗</button>
-    <section class="result" id="result" aria-live="polite">
-      <div class="eyebrow" id="eyebrow">A MESSAGE FROM THE UNIVERSE</div>
-      <p id="message"></p>
-      <p id="submessage"></p>
-      <button class="again" id="again">Again? I make questionable choices ↻</button>
-    </section>
-    <p class="fine">No sign-up. No tracking. No awkward DMs.<br>Just a tiny, unnecessary reason to smile.</p>
-  </section>
-  <p class="footer">made by a human with a scooty & too much internet ✦</p>
-</main>
-<script>
-  // EDIT THESE MESSAGES ANYTIME. Keep the same page URL and your QR code never changes.
-  const sideQuests = [
-    { tag:"COMPLIMENT DELIVERY", message:"You have the kind of face that makes a bad day buffer for a second.", sub:"That was your complimentary confidence boost. Please carry on being iconic." },
-    { tag:"OFFICIAL SCIENCE", message:"Statistically speaking, you are 100% more interesting than this website.", sub:"The study had one participant and zero funding. Still peer-reviewed by a cat." },
-    { tag:"A VERY SERIOUS ALERT", message:"🚨 Your smile has been reported for causing suspicious levels of good vibes.", sub:"The authorities are a golden retriever. You are not in trouble." },
-    { tag:"DAILY SIDE QUEST", message:"Your mission: drink some water, stretch your shoulders, and remember you're doing alright.", sub:"Quest difficulty: easy. Reward: +10 human points." },
-    { tag:"COMPLIMENT DELIVERY", message:"You look like someone who has excellent music taste. I will not be taking questions.", sub:"If your playlist is terrible, this message self-destructs in 3… 2… just kidding." },
-    { tag:"BREAKING NEWS", message:"Local stranger successfully found the internet's smallest comedy club.", sub:"Tonight's show is free. The comedian is a website. Please clap politely." },
-    { tag:"THE UNIVERSE TEXTED", message:"Psst. Something good might happen today. It could be tiny. Tiny still counts.", sub:"Like finding money in a pocket. Or getting the green light. Or perfect chai." },
-    { tag:"COMPLIMENT DELIVERY", message:"You deserve a little treat today. This website recommends: your favourite snack.", sub:"I would recommend paying for it yourself. My budget is literally zero rupees." }
-  ];
-  const button = document.getElementById("reveal");
-  const result = document.getElementById("result");
-  const message = document.getElementById("message");
-  const submessage = document.getElementById("submessage");
-  const eyebrow = document.getElementById("eyebrow");
-  let last = -1;
 
-  function showQuest() {
-    let i;
-    do { i = Math.floor(Math.random() * sideQuests.length); } while (sideQuests.length > 1 && i === last);
-    last = i;
-    const item = sideQuests[i];
-    eyebrow.textContent = item.tag;
-    message.textContent = item.message;
-    submessage.textContent = item.sub;
-    result.classList.remove("show");
-    void result.offsetWidth;
-    result.classList.add("show");
-    burst();
+  <div class="top">
+    <span>✦ A tiny internet stop</span>
+    <span>100% unofficial</span>
+  </div>
+
+  <section class="card">
+
+    <div class="pill">A PUBLIC SERVICE ANNOUNCEMENT 📢</div>
+
+    <h1>HEY,<br><span>COOL</span><br>STRANGER.</h1>
+
+    <p class="lead">
+      You scanned a random QR on a scooty.
+      Either you're curious or your decision-making is elite.
+      Both are respectable.
+    </p>
+
+    <!-- THE JOKE: visible immediately -->
+    <div class="joke">
+      <div class="jokeicon">🧠📶</div>
+      <div class="joketag">QUICK INTERNET JOKE</div>
+
+      <p class="jokeline">
+        My brain has too many tabs open…
+        and one of them is playing music but I can't find it.
+      </p>
+
+      <p class="jokesub">
+        If you relate, congratulations: you're a fully operational human.
+      </p>
+    </div>
+
+    <!-- A COMPLIMENT IS ALREADY VISIBLE -->
+    <section class="complimentbox" aria-live="polite">
+      <div class="tag">COMPLIMENT DELIVERY ✨</div>
+
+      <p class="compliment" id="compliment">
+        You have the kind of vibe that makes a place feel a little nicer.
+      </p>
+
+      <p class="sub" id="sub">
+        A rare talent. No certificate required.
+      </p>
+    </section>
+
+    <!-- THE ONLY BUTTON -->
+    <button class="primary" id="another">
+      MORE COMPLIMENTS ✨
+    </button>
+
+    <p class="footer">
+      No sign-up. No awkward DMs. Just jokes, compliments & good vibes.<br>
+      Have a lovely day, stranger. 💛
+    </p>
+
+  </section>
+
+  <p class="footer">
+    Made by a human with a scooty and questionable amounts of internet.
+  </p>
+
+</main>
+
+<script>
+const compliments = [
+  {
+    line: "You have the kind of vibe that makes a place feel a little nicer.",
+    sub: "A rare talent. No certificate required."
+  },
+  {
+    line: "You look like someone with genuinely good music taste.",
+    sub: "If your playlist is questionable, this compliment is non-refundable."
+  },
+  {
+    line: "Your smile probably fixes someone's day without you even knowing.",
+    sub: "Keep being your quietly awesome self."
+  },
+  {
+    line: "You give main-character energy, but in a good-season-finale kind of way.",
+    sub: "Excellent character development. 10/10."
+  },
+  {
+    line: "The world is already chaotic. Thanks for adding your own sparkle to it.",
+    sub: "An official compliment from the Department of Random Kindness."
+  },
+  {
+    line: "You deserve to hear something nice today: you're doing better than you think.",
+    sub: "A tiny reminder from a stranger on the internet. Take care of yourself."
+  },
+  {
+    line: "If being effortlessly cool was a subject, you might be suspiciously good at it.",
+    sub: "Unfortunately, the exam is just showing up as yourself."
+  },
+  {
+    line: "You seem like someone who could turn a boring day into a good story.",
+    sub: "Please use this power responsibly. Or at least hilariously."
+  },
+  {
+    line: "Your existence has excellent vibes. This review is completely unofficial: 10/10.",
+    sub: "Five stars from the Department of Random Kindness."
+  },
+  {
+    line: "Someone out there is lucky to know you. Even if it's currently you and your snacks.",
+    sub: "Self-appreciation counts. Snack appreciation counts twice."
+  },
+  {
+    line: "You deserve the same kindness you give other people.",
+    sub: "Just a little reminder to be nice to yourself, too."
+  },
+  {
+    line: "You might be someone's favourite notification. Never underestimate your presence.",
+    sub: "No pressure to do anything with that information. Just enjoy your day."
   }
-  function burst() {
-    const symbols = ["✦","✳","💫","♡","✧"];
-    const card = document.querySelector(".card");
-    for (let i=0;i<13;i++) {
-      const s = document.createElement("span");
-      s.className = "spark";
-      s.textContent = symbols[Math.floor(Math.random()*symbols.length)];
-      s.style.left = (15 + Math.random()*70) + "%";
-      s.style.top = (42 + Math.random()*25) + "%";
-      s.style.setProperty("--x", (Math.random()*150-75) + "px");
-      s.style.setProperty("--y", (Math.random()*-130-15) + "px");
-      card.appendChild(s);
-      setTimeout(() => s.remove(), 850);
-    }
+];
+
+let last = -1;
+
+const complimentEl = document.getElementById("compliment");
+const subEl = document.getElementById("sub");
+const card = document.querySelector(".card");
+const complimentBox = document.querySelector(".complimentbox");
+
+function nextCompliment() {
+  let i;
+
+  do {
+    i = Math.floor(Math.random() * compliments.length);
+  } while (compliments.length > 1 && i === last);
+
+  last = i;
+
+  const c = compliments[i];
+
+  complimentEl.textContent = c.line;
+  subEl.textContent = c.sub;
+
+  complimentBox.style.animation = "none";
+  void complimentBox.offsetWidth;
+  complimentBox.style.animation = "";
+
+  // Tiny sparkle burst
+  const symbols = ["✦", "✳", "♡", "✧", "💫"];
+
+  for (let j = 0; j < 10; j++) {
+    const s = document.createElement("span");
+
+    s.className = "spark";
+    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    s.style.left = (15 + Math.random() * 70) + "%";
+    s.style.top = (58 + Math.random() * 20) + "%";
+
+    s.style.setProperty("--x", (Math.random() * 130 - 65) + "px");
+    s.style.setProperty("--y", (-Math.random() * 100 - 20) + "px");
+
+    card.appendChild(s);
+    setTimeout(() => s.remove(), 850);
   }
-  button.addEventListener("click", () => {
-    showQuest();
-    button.textContent = "ANOTHER LITTLE SIDE QUEST ↗";
-    result.scrollIntoView({behavior:"smooth", block:"nearest"});
-  });
-  document.getElementById("again").addEventListener("click", showQuest);
+}
+
+document.getElementById("another").addEventListener("click", nextCompliment);
 </script>
 </body>
 </html>
